@@ -134,7 +134,10 @@ db:
       name: matomo-db-mysql
       key: mysql-root-password
   name: matomo
-  username: root
+  username:
+    secretKeyRef:
+      name: matomo-db-mysql
+      key: mysql-root-username
   prefix: matomo_
 xdebug:
   disabled: 1

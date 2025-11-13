@@ -50,7 +50,10 @@ spec:
           value: {{.Values.db.prefix}}
         {{ end }}
         - name: MATOMO_DB_USERNAME
-          value: {{.Values.db.username}}
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.db.username.secretKeyRef.name }}
+              key: {{ .Values.db.username.secretKeyRef.key }}
         - name: MATOMO_DB_PASSWORD
           valueFrom:
             secretKeyRef:
